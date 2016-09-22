@@ -26,15 +26,6 @@ var Promise = require('sequelize').Promise;
 
 
 db.sync({ force: true })
-    .then(function(){
-        return seedClassrooms();
-    })
-    .then(function () {
-        return seedUsers();
-    })
-    .then(function(){
-        return seedChildren();
-    })
     .then(function () {
         console.log(chalk.green('Seed successful!'));
         process.exit(0);

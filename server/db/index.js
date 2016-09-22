@@ -16,10 +16,10 @@ var Nap = require('./models/nap');
 
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
-User.belongsToMany(Child, {as: 'parent', through: 'parent_child', foreignKey: 'parentId'});
-Child.belongsToMany(User, {through: 'parent_child'});
-User.belongsToMany(Classroom, {as: 'teacher', through: 'teacher_classroom', foreignKey: 'teacherId'});
-Classroom.belongsToMany(User, {through: 'teacher_classroom'});
+User.belongsTo(Child);
+Child.hasMany(User, {as: 'parent'});
+User.belongsTo(Classroom);
+Classroom.hasMany(User, {as: 'teacher'});
 Checkin.belongsTo(User, { foreignKey: 'parentId'});
 User.hasMany(Checkin, {as: 'parent', foreignKey: 'parentId'});
 Child.hasMany(Checkin);
