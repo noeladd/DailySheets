@@ -1,5 +1,5 @@
 'use strict';
-const router = require('express').Router();
+const router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 const db = require('../../../db')
 const Child = db.model('child')
@@ -19,7 +19,17 @@ router.get('/', function( req, res, next){
 router.param('id', function(req, res, next, id){
     Child.findById(id, {include: [
         {model: Day},
-        {model: User},
+        {model: User, as: 'parent'},
         {model: Classroom}
     ]})
+    .then(function (child){
+        if (!child) res.status(404).send();
+        req.childById = child;
+        next();
+    })
+    .catch(next);
 })
+
+router.get('/:id', function(req, res, next){
+    res.send(req.childById);
+});

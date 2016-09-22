@@ -24,6 +24,8 @@ Checkin.belongsTo(User, { foreignKey: 'parentId'});
 User.hasMany(Checkin, {as: 'parent', foreignKey: 'parentId'});
 Child.hasMany(Checkin);
 Checkin.belongsTo(Child);
+Checkin.belongsTo(Classroom);
+Classroom.hasMany(Checkin);
 Child.belongsTo(Classroom);
 Classroom.hasMany(Child);
 Day.belongsTo(Child);
