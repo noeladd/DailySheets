@@ -3,6 +3,7 @@ const router = require('express').Router(); //eslint-disable-line new-cap
 module.exports = router;
 const db = require('../../../db');
 const Message = db.model('message');
+const User = db.model('user');
 
 router.get('/to/:id', function(req, res, next){
     Message.findAll({
