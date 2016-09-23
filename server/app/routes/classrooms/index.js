@@ -17,10 +17,10 @@ router.get('/', function(req, res, next){
 router.param('id', function(req, res, next, id){
     Classroom.findById(id, {include: [
         {model: Child},
-        {mode: User, as: 'teacher'}
+        {model: User, as: 'teacher'}
     ]}).then(function(classroom){
         if (!classroom) res.status(404).send();
-        req.ClassroomBy.Id = classroom;
+        req.classroomById = classroom;
         next();
     })
     .catch(next);

@@ -27,7 +27,7 @@ router.param('id', function(req, res, next, id){
         {model: Classroom}
     ]})
     .then(function(teacher){
-        if(!teacher) res.status(404).send();
+        if (!teacher) res.status(404).send();
         req.teacherById = teacher;
         next()
     })

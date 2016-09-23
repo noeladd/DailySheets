@@ -32,7 +32,7 @@ module.exports = db.define('user', {
         default: false
     },
     phoneNumbers: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING) // eslint-disable-line new-cap
     },
     picture: {
         type: Sequelize.STRING

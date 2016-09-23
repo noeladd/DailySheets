@@ -6,6 +6,7 @@ const Checkin = db.model('checkin');
 const User = db.model('user');
 const Child = db.model('child');
 
+//gets all checkins for a classroom
 router.get('/class/:id', function(req, res, next){
     Checkin.findAll({where: {classroomId: req.params.id}})
     .then(function (checkins){
@@ -14,6 +15,7 @@ router.get('/class/:id', function(req, res, next){
     .catch(next);
 });
 
+//retrieves an individual checkin
 router.param('id', function(req, res, next, id){
     Checkin.findById(id, {include: [
         {model: Child},

@@ -9,7 +9,7 @@ module.exports = db.define('feeding', {
         type: Sequelize.STRING
     },
     type: {
-        type: Sequelize.ENUM('formula', 'breast milk')
+        type: Sequelize.ENUM('formula', 'breast milk') // eslint-disable-line new-cap
     },
     ounces: {
         type: Sequelize.INTEGER

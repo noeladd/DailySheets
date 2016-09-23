@@ -19,8 +19,9 @@ var Nap = require('./models/nap');
 User.belongsTo(Child);
 Child.hasMany(User, {as: 'parent'});
 User.belongsTo(Classroom);
-Classroom.hasMany(User, {as: 'teacher'});
-Checkin.belongsTo(User, { foreignKey: 'parentId'});
+Classroom.hasMany(User, {as: 'teacher'
+});
+Checkin.belongsTo(User, {as: 'parent', foreignKey: 'parentId'});
 User.hasMany(Checkin, {as: 'parent', foreignKey: 'parentId'});
 Child.hasMany(Checkin);
 Checkin.belongsTo(Child);

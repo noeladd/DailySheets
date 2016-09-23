@@ -5,6 +5,7 @@ const db = require('../../../db')
 const Child = db.model('child')
 const Day = db.model('day')
 const Classroom = db.model('classroom')
+const Checkin = db.model('checkin')
 const User = db.model('user')
 
 
@@ -20,7 +21,8 @@ router.param('id', function(req, res, next, id){
     Child.findById(id, {include: [
         {model: Day},
         {model: User, as: 'parent'},
-        {model: Classroom}
+        {model: Classroom},
+        {model: Checkin}
     ]})
     .then(function (child){
         if (!child) res.status(404).send();
