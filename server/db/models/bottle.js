@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 
 const db = require('../_db');
 
-module.exports = db.define('feeding', {
+module.exports = db.define('Bottle', {
     time: {
         type: Sequelize.STRING
     },

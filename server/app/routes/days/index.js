@@ -4,7 +4,7 @@ module.exports = router;
 const db = require('../../../db');
 const Day = db.model('day');
 const Diaper = db.model('diaper');
-const Feeding = db.model('feeding');
+const Bottle = db.model('bottle');
 const Nap = db.model('nap');
 const Meal = db.model('meal');
 const Child =  db.model('child');
@@ -21,7 +21,7 @@ router.get('/', function(req, res, next){
 router.param('id', function(req, res, next, id){
     Day.findById(id, {include: [
         {model: Diaper},
-        {model: Feeding},
+        {model: Bottle},
         {model: Nap},
         {model: Meal}
         ]})

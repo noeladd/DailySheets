@@ -50,7 +50,7 @@ let diaperInfo = {
     notes: 'very red, apply cream every change'
 }
 
-let feedingInfo = {
+let bottleInfo = {
     time: '12:45 PM',
     type: 'breast milk',
     ounces: 6,
@@ -71,7 +71,7 @@ let napInfo = {
 }
 
 describe('Day Route', function(){
-    let app, User, Child, Classroom, Checkin, Day, Diaper, Feeding, Meal, Nap, agent, teacher, child, classroom, parent, checkin, day, diaper, feeding, meal, nap; //eslint-disable-line
+    let app, User, Child, Classroom, Checkin, Day, Diaper, Bottle, Meal, Nap, agent, teacher, child, classroom, parent, checkin, day, diaper, bottle, meal, nap; //eslint-disable-line
 
     beforeEach('Sync DB', function () {
         return db.sync({force: true});
@@ -85,7 +85,7 @@ describe('Day Route', function(){
         Checkin = db.model('checkin');
         Day = db.model('day');
         Diaper = db.model('diaper');
-        Feeding = db.model('feeding');
+        Bottle = db.model('bottle');
         Meal = db.model('meal');
         Nap = db.model('nap')
     });
@@ -178,13 +178,13 @@ describe('Day Route', function(){
         .catch(done);
     });
 
-    beforeEach('create a feeding', function(done){
-        Feeding.create(feedingInfo)
-        .then(function(createdFeeding){
-            return createdFeeding.setDay(day);
+    beforeEach('create a Bottle', function(done){
+        Bottle.create(bottleInfo)
+        .then(function(createdBottle){
+            return createdBottle.setDay(day);
         })
-        .then(function(createdFeeding){
-            feeding = createdFeeding;
+        .then(function(createdBottle){
+            bottle = createdBottle;
             done();
         })
         .catch(done);

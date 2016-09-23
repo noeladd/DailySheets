@@ -9,7 +9,7 @@ var Child = require('./models/child');
 var Classroom = require('./models/classroom');
 var Day = require('./models/day');
 var Diaper = require('./models/diaper');
-var Feeding = require('./models/feeding');
+var Bottle = require('./models/bottle');
 var Meal = require('./models/meal');
 var Message = require('./models/message');
 var Nap = require('./models/nap');
@@ -33,8 +33,8 @@ Day.belongsTo(Child);
 Child.hasMany(Day);
 Day.hasMany(Diaper);
 Diaper.belongsTo(Day)
-Day.hasMany(Feeding);
-Feeding.belongsTo(Day);
+Day.hasMany(Bottle);
+Bottle.belongsTo(Day);
 Day.hasMany(Meal);
 Meal.belongsTo(Day);
 Day.hasMany(Nap)
@@ -43,10 +43,10 @@ Diaper.belongsTo(Child);
 Child.hasMany(Diaper);
 Diaper.belongsTo(User, {foreignKey: 'teacherId'})
 User.hasMany(Diaper, {as: 'teacher', foreignKey: 'teacherId'});
-Feeding.belongsTo(Child);
-Child.hasMany(Feeding);
-Feeding.belongsTo(User, {foreignKey: 'teacherId'});
-User.hasMany(Feeding, {as: 'teacher', foreignKey: 'teacherId'});
+Bottle.belongsTo(Child);
+Child.hasMany(Bottle);
+Bottle.belongsTo(User, {foreignKey: 'teacherId'});
+User.hasMany(Bottle, {as: 'teacher', foreignKey: 'teacherId'});
 Nap.belongsTo(Child);
 Child.hasMany(Nap);
 Message.belongsTo(User, {as: 'from'});
