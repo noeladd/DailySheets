@@ -37,7 +37,7 @@ let dayInfo = {
 }
 
 describe('Checkin Route', function(){
-    let app, Day, User, Child, Classroom, Checkin, agent, user, day, child, classroom, checkin;
+    let app, Day, User, Child, Classroom, Checkin, agent, user, day, child, classroom, checkin; //eslint-disable-line
 
     beforeEach('Sync DB', function () {
         return db.sync({force: true});

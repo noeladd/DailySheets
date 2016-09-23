@@ -71,12 +71,12 @@ let napInfo = {
 }
 
 describe('Day Route', function(){
-    let app, User, Child, Classroom, Checkin, Day, Diaper, Feeding, Meal, Nap, agent, teacher, child, classroom, parent, checkin, day, diaper, feeding, meal, nap;
+    let app, User, Child, Classroom, Checkin, Day, Diaper, Feeding, Meal, Nap, agent, teacher, child, classroom, parent, checkin, day, diaper, feeding, meal, nap; //eslint-disable-line
 
     beforeEach('Sync DB', function () {
         return db.sync({force: true});
     });
-    
+
     beforeEach('create app', function(){
         app = require('../../../server/app')(db);
         User = db.model('user');
@@ -202,11 +202,23 @@ describe('Day Route', function(){
         .catch(done);
     });
 
+    beforeEach('create a nap', function(done){
+        Nap.create(napInfo)
+        .then(function(createdNap){
+            return createdNap.setDay(day);
+        })
+        .then(function(createdNap){
+            nap = createdNap;
+            done();
+        })
+        .catch(done);
+    })
+
     describe('day by Id', function(){
         it('should get a day back as a response', function(done) {
             agent.get('/api/days/1').expect(200).end(function(err, response){
                 if (err) return done(err);
-                console.log(response.body);
+                // console.log(response.body);
                 expect(response.body.childId).to.equal(1);
                 done();
             });

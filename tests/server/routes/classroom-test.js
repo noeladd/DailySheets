@@ -6,7 +6,7 @@ const supertest = require('supertest');
 let teacherInfo = {
     name: 'Violet Bridges',
     email: 'violet@motherhen.com',
-    password:'violetB',
+    password: 'violetB',
     isParent: false,
     isTeacher: true,
     isAdmin: false
@@ -44,7 +44,7 @@ let dayInfo = {
 };
 
 describe('Classroom Route', function(){
-    let app, User, Child, Classroom, Checkin, Day, agent, teacher, child, classroom, parent, checkin, day;
+    let app, User, Child, Classroom, Checkin, Day, agent, teacher, child, classroom, parent, checkin, day; //eslint-disable-line
 
     beforeEach('Sync DB', function () {
         return db.sync({force: true});
@@ -135,10 +135,10 @@ describe('Classroom Route', function(){
         })
         .catch(done);
     });
-    
+
     describe('All Classrooms', function(){
         it('should get a response with an array of children', function(done) {
-            agent.get('/api/classrooms').expect(200).end(function(err,response){
+            agent.get('/api/classrooms').expect(200).end(function(err, response){
                 if (err) return done(err)
                 console.log(response.body[0]);
                 expect(response.body).to.be.an('array');
@@ -151,13 +151,13 @@ describe('Classroom Route', function(){
     describe('Classroom by Id', function(){
         it('should get a classroom back as a response', function(done) {
             agent.get('/api/classrooms/1').expect(200).end(function(err, response){
-                if(err) return done(err);
+                if (err) return done(err);
                 //console.log(response.body)
                 expect(response.body.ageRange).to.equal(classroom.ageRange);
                 expect(response.body.teacher[0].name).to.equal(teacher.name);
                 expect(response.body.children[0].name).to.equal(child.name);
                 done()
-            }) 
+            })
         })
     })
 })
