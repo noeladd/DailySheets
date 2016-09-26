@@ -5,6 +5,12 @@ const db = require('../../../db');
 const Message = db.model('message');
 const User = db.model('user');
 
+router.put('/', function(req,res,next){
+    Message.create(req.body)
+    .then(function(createdMessage){
+        res.status(201).json(createdMessage);
+    })
+})
 router.get('/:id', function(req, res, next){
     Message.findById(req.params.id)
     .then(function(message){

@@ -1,7 +1,6 @@
 <div class="row" ng-repeat="message in messages">
+    <a class="button" ui-sref="send" >Send A Message!</a>
     <a u-sref = "message({id = message.id})">{{ message.subject }}</h5>
     <small>From: {{ message.from.name }}</small>
     <small>To: {{ message.to.name }}</small>
-
-    
 </div>

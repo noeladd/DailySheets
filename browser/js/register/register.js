@@ -6,19 +6,26 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('RegisterCtrl', function($rootScope, $scope, $state, $http){
+app.controller('RegisterCtrl', function($rootScope, $scope, $state, RegisterFactory){
 
     $scope.user = {};
     $scope.error = null;
 
-    $scope.register = function(userInfo) {
-
-        $http.post('api/users', userInfo)
-        .then(function(){
+    $scope.register = function(info){
+        RegisterFactory.register(info)
+    .then(function(){
             $state.go('home');
         })
-        .catch(function() {
+    .catch(function() {
             $scope.error = 'Invalid registration!'
         })
-    }
+}
+});
+
+app.factory('RegisterFactory', function($http){
+    var register = function(userInfo) {
+       return $http.post('api/users', userInfo)
+    };
+    return {register};
 })
+
