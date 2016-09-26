@@ -1,0 +1,9 @@
+<h2>{{classroom.name}}</h2>
+<br>
+<h4>{{ classroom.ageRange }}</h4>
+<br>
+<ul>
+    <li ng-repeat="child in classroom.children">
+       <a ui-sref="child({id: child.id})">{{child.name}}</a> 
+        </li>
+</ul>

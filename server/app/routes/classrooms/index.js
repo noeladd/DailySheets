@@ -6,6 +6,14 @@ const Classroom = db.model('classroom');
 const User = db.model('user');
 const Child = db.model('child');
 
+router.post('/', function(req, res, next){
+    Classroom.create(req.body)
+    .then(function(createdClassroom){
+        res.status(201).json(createdClassroom)
+    })
+    .catch(next)
+})
+
 router.get('/', function(req, res, next){
     Classroom.findAll()
     .then(function (classrooms){

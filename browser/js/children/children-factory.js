@@ -5,4 +5,5 @@ app.factory('ChildrenFactory', function($http){
             return response.data;
         })
     }
+    return {getAll}
 })

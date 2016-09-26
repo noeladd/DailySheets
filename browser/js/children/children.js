@@ -1,12 +1,12 @@
-app.config(function($stateProvider){
+app.config(function ($stateProvider){
     $stateProvider.state('children', {
-        url:'/children',
+        url: '/children',
         templateUrl: 'js/children/children.html',
-        controller: 'Children',
+        controller: 'ChildrenCtrl',
         resolve: {
             children: function(ChildrenFactory){
                 return ChildrenFactory.getAll();
             }
         }
-    })
+    });
 })

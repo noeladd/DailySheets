@@ -12,13 +12,21 @@ router.post('/', function(req, res, next){
     .catch(next);
 })
 
+router.get('/', function(req,res,next){
+    User.findAll()
+    .then(function(users){
+        res.json(users)
+    })
+    .catch(next);
+})
+
 router.get('/staff', function( req, res, next){
     User.findAll({where: {isParent: false}}
     )
     .then(function(teachers){
         res.json(teachers);
     })
-    .catch(next)
+    .catch(next);
 });
 
 router.get('/parents', function(req, res, next){
@@ -27,4 +35,11 @@ router.get('/parents', function(req, res, next){
         res.json(parents);
     })
     .catch(next)
+})
+
+router.get('/:id', function(req, res, next){
+    User.findById(req.params.id)
+    .then(function(user){
+        res.json(user);
+    })
 })
