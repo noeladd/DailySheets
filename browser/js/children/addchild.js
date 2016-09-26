@@ -6,12 +6,15 @@ app.config(function ($stateProvider){
     })
 });
 
-app.controller('addChildCtrl', function($scope, ClassroomFactory, ChildFactory){
+app.controller('addChildCtrl', function($scope, ClassroomFactory, ChildFactory, $state){
     ClassroomFactory.getAll()
     .then(function(classrooms){
         console.log(classrooms)
         $scope.classrooms = classrooms.data
     })
 
-    $scope.submit = ChildFactory.add;
+    $scope.submit = function(info){
+     ChildFactory.add(info);
+     $state.go('children');
+    }
 })

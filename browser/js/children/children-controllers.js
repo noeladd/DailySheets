@@ -1,3 +1,4 @@
 app.controller('ChildrenCtrl', function($scope, children){
-    $scope.children = children.data
+    console.log(children);
+    $scope.children = children
 })

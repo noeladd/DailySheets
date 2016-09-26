@@ -8,5 +8,8 @@ app.factory('ChildFactory', function($http){
     let add = function(info){
         return $http.post('/api/children', info)
     }
-    return {getAll, add}
+    let getOne = function(id){
+        return $http.get('/api/children/' + id);
+    }
+    return {getAll, add, getOne}
 })

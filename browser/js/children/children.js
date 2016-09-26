@@ -4,8 +4,8 @@ app.config(function ($stateProvider){
         templateUrl: 'js/children/children.html',
         controller: 'ChildrenCtrl',
         resolve: {
-            children: function(ChildrenFactory){
-                return ChildrenFactory.getAll();
+            children: function(ChildFactory){
+                return ChildFactory.getAll();
             }
         }
     });
