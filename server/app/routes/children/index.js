@@ -8,6 +8,12 @@ const Classroom = db.model('classroom')
 const Checkin = db.model('checkin')
 const User = db.model('user')
 
+router.post('/', function(req, res,next){
+    Child.create(req.body)
+    .then(function(createdChild){
+        res.status(201).json(createdChild)
+    })
+})
 
 router.get('/', function( req, res, next){
     Child.findAll()

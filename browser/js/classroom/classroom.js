@@ -1,16 +1,15 @@
 app.config(function($stateProvider){
     $stateProvider.state('classroom', {
-        url: '/classrooms/:id',
-        templateUrl: 'js/classrooms/classroom.html',
-        controller: 'ClassroomCtrl',
-        resolve: {
-            classroom: function(ClassroomFactory, $stateParams){
-                ClassroomFactory.getById($stateParams.id)
-            }
-        }
+        url: '/classroom/:id',
+        templateUrl: 'js/classroom/classroom.html',
+        controller: 'ClassroomCtrl'
     })
 })
 
-app.controller('ClassroomCtrl', function($scope, classroom){
-    $scope.classroom = classroom;
-})
+app.controller('ClassroomCtrl', function($scope, ClassroomFactory, $stateParams){
+    ClassroomFactory.getById($stateParams.id)
+    .then(function(classroom){
+        console.log(classroom);
+        $scope.classroom = classroom.data;
+    })
+});
