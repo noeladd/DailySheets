@@ -14,8 +14,7 @@ var Meal = require('./models/meal');
 var Message = require('./models/message');
 var Nap = require('./models/nap');
 
-// if we had more models, we could associate them in this file
-// e.g. User.hasMany(Reports)
+
 User.belongsTo(Child);
 Child.hasMany(User, {as: 'parent'});
 User.belongsTo(Classroom);
