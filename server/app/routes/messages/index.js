@@ -5,6 +5,13 @@ const db = require('../../../db');
 const Message = db.model('message');
 const User = db.model('user');
 
+router.get('/:id', function(req, res, next){
+    Message.findById(req.params.id)
+    .then(function(message){
+        res.json(message);
+    })
+    .catch(next);
+})
 router.get('/to/:id', function(req, res, next){
     Message.findAll({
         where: {
