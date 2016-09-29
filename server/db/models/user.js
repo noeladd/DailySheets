@@ -21,18 +21,24 @@ module.exports = db.define('user', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    is_parent: {
+    isParent: {
         type: Sequelize.BOOLEAN
     },
-    is_teacher: {
+    isTeacher: {
         type: Sequelize.BOOLEAN
     },
-    is_admin: {
+    isAdmin: {
         type: Sequelize.BOOLEAN,
         default: false
     },
-    phone_numbers: {
+    phoneNumbers: {
         type: Sequelize.ARRAY(Sequelize.STRING)
+    },
+    picture: {
+        type: Sequelize.STRING
+    },
+    address: {
+        type: Sequelize.TEXT
     }
 }, {
     instanceMethods: {
