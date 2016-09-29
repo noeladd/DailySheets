@@ -1,0 +1,60 @@
+<form id = "register-form" name="registerForm" ng-submit="register(user)">
+    <alert type="danger" ng-show="error">
+        {{ error }}
+    </alert>
+    <h3>Register New User</h3>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" ng-model="user.name" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" ng-model="user.email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" ng-model="user.password" class ="form-control" id="password">
+    </div>
+    <div class="form-group">
+        <span>Teacher:</span>
+        <label>
+            <input type="radio" ng-model="user.isTeacher" value="true" class="form-control" id="isTeacher.true">
+            True
+        </label>
+        <label>
+            <input type="radio" ng-model="user.isTeacher" value="false" class="form-control" id="isTeacher.false">
+            False
+        </label>
+    </div>
+    <div class="form-group">
+        <span>Parent:</span>
+        <label>
+            <input type="radio" ng-model="user.isParent" value="true" class="form-control" id="isParent.true">
+            True
+        </label>
+        <label>
+            <input type="radio" ng-model="user.isParent" value="false" class="form-control" id="isParent.false">
+            False
+        </label>
+    </div>
+    <div class="form-group">
+        <span>Admin:</span>
+        <label>
+            <input type="radio" ng-model="user.isAdmin" value="true" class="form-control" id="isAdmin.true">
+            True
+        </label>
+        <label>
+            <input type="radio" ng-model="user.isAdmin" value="false" class="form-control" id="isAdmin.false">
+            False
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" ng-model="user.phoneNumber" class="form-control" id="phone">
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" ng-model="user.address" class="form-control" id="address"> 
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

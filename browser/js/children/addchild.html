@@ -1,0 +1,18 @@
+<form id="child" name ="childForm" ng-submit="submit(child)">
+    <div class="form-group">
+        <label for ="name">Name</label>
+        <input type="text" ng-model="child.name">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="birthdate">Birth Date</label>
+        <input type="text" ng-model="child.birthdate">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="classroom">Classroom</label>
+        <select ng-options="classroom.id as classroom.name for classroom in classrooms track by classroom.id" ng-model="child.classroomId"></select>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

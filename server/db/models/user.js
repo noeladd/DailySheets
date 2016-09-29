@@ -8,7 +8,8 @@ var db = require('../_db');
 module.exports = db.define('user', {
     email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: Sequelize.STRING,
@@ -31,8 +32,8 @@ module.exports = db.define('user', {
         type: Sequelize.BOOLEAN,
         default: false
     },
-    phoneNumbers: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+    phoneNumber: {
+        type: Sequelize.STRING
     },
     picture: {
         type: Sequelize.STRING

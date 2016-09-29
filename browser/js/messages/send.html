@@ -1,0 +1,23 @@
+<form id="message" name="messageForm" ng-submit="send(message)">
+    <alert type="danger" ng-show="error">
+        {{error}}
+    </alert>
+    <div class="form-group">
+        <label for="To">To</label>
+        <select ng-options="toUser.id as toUser.name for toUser in toUsers track by toUser.id" ng-model="message.toId">
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="From">From</label>
+        <p >{{user.name}}</p>
+    </div>
+    <div class="form-group">
+        <label for="Subject">Subject</label>
+        <input type="text" ng-model="message.subject">
+    </div>
+    <div class="form-group">
+        <label for="Content">Content</label>
+        <textarea  ng-model="message.content" cols="40" rows="5" id="content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

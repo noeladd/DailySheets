@@ -91,7 +91,7 @@ describe('User model', function () {
             var saltSpy;
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({ email: 'obama@gmail.com', password: 'potus', name: 'Barack Obama' });
             };
 
             beforeEach(function () {
@@ -133,7 +133,7 @@ describe('User model', function () {
         describe('sanitize method', function () {
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({ email: 'obama@gmail.com', password: 'potus', name: 'Barack Obama' });
             };
 
             it('should remove sensitive information from a user object', function () {

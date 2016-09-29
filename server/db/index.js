@@ -9,29 +9,31 @@ var Child = require('./models/child');
 var Classroom = require('./models/classroom');
 var Day = require('./models/day');
 var Diaper = require('./models/diaper');
-var Feeding = require('./models/feeding');
+var Bottle = require('./models/bottle');
 var Meal = require('./models/meal');
 var Message = require('./models/message');
 var Nap = require('./models/nap');
 
-// if we had more models, we could associate them in this file
-// e.g. User.hasMany(Reports)
-User.belongsToMany(Child, {as: 'parent', through: 'parent_child', foreignKey: 'parentId'});
-Child.belongsToMany(User, {through: 'parent_child'});
-User.belongsToMany(Classroom, {as: 'teacher', through: 'teacher_classroom', foreignKey: 'teacherId'});
-Classroom.belongsToMany(User, {through: 'teacher_classroom'});
-Checkin.belongsTo(User, { foreignKey: 'parentId'});
+
+User.belongsTo(Child);
+Child.hasMany(User, {as: 'parent'});
+User.belongsTo(Classroom);
+Classroom.hasMany(User, {as: 'teacher'
+});
+Checkin.belongsTo(User, {as: 'parent', foreignKey: 'parentId'});
 User.hasMany(Checkin, {as: 'parent', foreignKey: 'parentId'});
 Child.hasMany(Checkin);
 Checkin.belongsTo(Child);
+Checkin.belongsTo(Classroom);
+Classroom.hasMany(Checkin);
 Child.belongsTo(Classroom);
 Classroom.hasMany(Child);
 Day.belongsTo(Child);
 Child.hasMany(Day);
 Day.hasMany(Diaper);
 Diaper.belongsTo(Day)
-Day.hasMany(Feeding);
-Feeding.belongsTo(Day);
+Day.hasMany(Bottle);
+Bottle.belongsTo(Day);
 Day.hasMany(Meal);
 Meal.belongsTo(Day);
 Day.hasMany(Nap)
@@ -40,10 +42,10 @@ Diaper.belongsTo(Child);
 Child.hasMany(Diaper);
 Diaper.belongsTo(User, {foreignKey: 'teacherId'})
 User.hasMany(Diaper, {as: 'teacher', foreignKey: 'teacherId'});
-Feeding.belongsTo(Child);
-Child.hasMany(Feeding);
-Feeding.belongsTo(User, {foreignKey: 'teacherId'});
-User.hasMany(Feeding, {as: 'teacher', foreignKey: 'teacherId'});
+Bottle.belongsTo(Child);
+Child.hasMany(Bottle);
+Bottle.belongsTo(User, {foreignKey: 'teacherId'});
+User.hasMany(Bottle, {as: 'teacher', foreignKey: 'teacherId'});
 Nap.belongsTo(Child);
 Child.hasMany(Nap);
 Message.belongsTo(User, {as: 'from'});

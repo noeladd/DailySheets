@@ -1,9 +1,18 @@
 * {
   box-sizing: border-box;
 }
+//Google Fonts
+@import 'https://fonts.googleapis.com/css?family=Arvo';
+
+//Font Variables 
+$arvo: 'Arvo', serif;
 
 body {
-  background: #fdfdfd;
+  background: #daad86;
+  color: #feffff;
+  font-family: $arvo;
+  -moz-border-radius: 10px 20px 30px 0;
+  -webkit-border-radius: 36px 12px;
 }
 
 @mixin clearfix {
@@ -15,8 +24,33 @@ body {
 }
 
 #main {
-  padding-top: 60px;
+  padding: 5%;
   margin: 0 auto;
+}
+
+input {
+  color: #98dafc;
+  clear: both;
+}
+
+button {
+  color: #312c32
+}
+
+#id-text {
+  float: left;
+}
+
+#about {
+  font-size: 15px;
+}
+
+#signup-form {
+  width: 60%;
+  margin: 0 auto
+}
+#content {
+  color: #312c32
 }
 
 @import 'directives/main';

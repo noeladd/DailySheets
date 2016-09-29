@@ -1,0 +1,7 @@
+<a ui-sref="addChild">Add A New Child</a>
+
+<div class="row" ng-repeat="child in children">
+    <h3>
+        <a ui-sref="child({id: child.id})">{{child.name}}</a></h3>
+    <br>
+</div>

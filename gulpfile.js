@@ -1,3 +1,4 @@
+/*global require process __dirname console */
 // All used modules.
 var gulp = require('gulp');
 var babel = require('gulp-babel');
@@ -85,7 +86,7 @@ gulp.task('testBrowserJS', function (done) {
     //testing environment variable
     process.env.NODE_ENV = 'testing';
     var server = new karma.Server({
-        configFile: __dirname + '/tests/browser/karma.conf.js',
+        configFile: __dirname + '/tests/browser/karma.conf.js', //eslint-disable-line 
         singleRun: true
     }, done);
     server.start();

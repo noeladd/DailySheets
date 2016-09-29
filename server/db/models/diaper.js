@@ -9,7 +9,7 @@ module.exports = db.define('diaper', {
         type: Sequelize.STRING
     },
     type: {
-        type: Sequelize.ENUM('wet', 'dry', 'bowel movement')
+        type: Sequelize.ENUM('wet', 'dry', 'bowel movement') // eslint-disable-line new-cap
     },
     cream: {
         type: Sequelize.BOOLEAN
